@@ -1,5 +1,4 @@
-  p
-ipeline {
+ pipeline {
       agent any
 
       stages {
@@ -11,30 +10,21 @@ ipeline {
           }
           stage('Build') {
               steps {
-                  echo "Construction du build #${BUILD_NUMBER}"
+                  echo "Construction du build"
                   sh 'cat README.md'
               }
           }
           stage('Test') {
               steps {
-                  echo "Lancement des tests..."
-                  sh 'test -f Jenkinsfile && echo "Jenkinsfile existe : OK"'
-                  sh 'test -f README.md && echo "README existe : OK"'
+                  echo "Lancement des tests"
+                  sh 'test -f Jenkinsfile && echo "Jenkinsfile existe"'
+                  sh 'test -f README.md && echo "README existe"'
               }
           }
           stage('Deploy') {
               steps {
-                  echo "Deploiement termine !"
+                  echo "Deploiement termine"
               }
-          }
-      }
-  
-      post {
-          success {
-              echo "Pipeline reussie !"
-          }
-          failure {
-              echo "Pipeline echouee !"
           }
       }
   }
